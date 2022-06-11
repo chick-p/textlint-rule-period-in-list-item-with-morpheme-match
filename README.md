@@ -1,5 +1,7 @@
 # textlint-rule-period-in-list-item-with-morpheme-match
 
+![](https://github.com/chick-p/textlint-rule-period-in-list-item-with-morpheme-match/workflows/test/badge.svg?branch=main)
+
 ## Install
 
 Install with GitHub
