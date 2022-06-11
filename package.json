@@ -42,5 +42,8 @@
   },
   "author": "chick-p",
   "license": "MIT",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "check-ends-with-period": "^1.0.1"
+  }
 }
