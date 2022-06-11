@@ -1,7 +1,5 @@
 # textlint-rule-period-in-list-item-with-morpheme-match
 
-
-
 ## Install
 
 Install with [npm](https://www.npmjs.com/):
@@ -14,9 +12,9 @@ Via `.textlintrc`(Recommended)
 
 ```json
 {
-    "rules": {
-        "period-in-list-item-with-morpheme-match": true
-    }
+  "rules": {
+    "period-in-list-item-with-morpheme-match": true
+  }
 }
 ```
 
