@@ -6,56 +6,86 @@ tester.run("rule", rule, {
   valid: [
     `text.`,
     {
-      text: `* Item.`,
+      text: `* 項目`,
     },
     {
-      text: `* Item1.\n* Item2.`,
+      text: `* 項目1\n* 項目2`,
     },
-    ,
     {
-      text: `* Item1.\n  * Item1-1.`,
+      text: `* 項目1\n  * 項目1-1`,
+    },
+    {
+      text: "* `ITEM`：項目",
+    },
+    {
+      text: "* `ITEM`：項目（その他）",
+    },
+    {
+      text: "* `ITEM1`：1番目の項目\n* `ITEM2`：2番目の項目",
+    },
+    {
+      text: `* 項目を追加します。`,
+    },
+    {
+      text: `1. 項目を追加します。`,
+    },
+    {
+      text: `* 項目を追加します。\n  * 項目を追加します。`,
     },
   ],
   invalid: [
     {
-      text: `* Item`,
-      output: `* Item.`,
-      options: {
-        preferPeriodMark: ".",
-      },
+      text: `* 項目を追加します`,
       errors: [
         {
-          message: `Not exist period mark(".") at end of list item.`,
+          message: `Not exist period mark("。") at end of list item.`,
           line: 1,
-          column: 6,
+          column: 3,
         },
       ],
     },
     {
-      text: `* Item1.\n* Item2`,
-      output: `* Item1.\n* Item2.`,
-      options: {
-        preferPeriodMark: ".",
-      },
+      text: `1. 項目を追加します`,
       errors: [
         {
-          message: `Not exist period mark(".") at end of list item.`,
-          line: 2,
-          column: 7,
+          message: `Not exist period mark("。") at end of list item.`,
+          line: 1,
+          column: 4,
         },
       ],
     },
     {
-      text: `* Item1.\n  * Item1-1`,
-      output: `* Item1.\n  * Item1-1.`,
-      options: {
-        preferPeriodMark: ".",
-      },
+      text: `* 項目\n* 項目です`,
       errors: [
         {
-          message: `Not exist period mark(".") at end of list item.`,
+          message: `Not exist period mark("。") at end of list item.`,
           line: 2,
-          column: 11,
+          column: 3,
+        },
+      ],
+    },
+    {
+      text: `* 項目を追加します\n* 項目を追加します`,
+      errors: [
+        {
+          message: `Not exist period mark("。") at end of list item.`,
+          line: 1,
+          column: 3,
+        },
+        {
+          message: `Not exist period mark("。") at end of list item.`,
+          line: 2,
+          column: 3,
+        },
+      ],
+    },
+    {
+      text: `* 項目を追加します。\n* 項目を追加します`,
+      errors: [
+        {
+          message: `Not exist period mark("。") at end of list item.`,
+          line: 2,
+          column: 3,
         },
       ],
     },
