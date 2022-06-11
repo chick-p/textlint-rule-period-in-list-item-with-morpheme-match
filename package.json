@@ -21,7 +21,7 @@
     "textlint-scripts": "^12.1.1",
     "textlint-tester": "^12.1.1",
     "ts-node": "^10.7.0",
-    "typescript": "^4.2.4"
+    "typescript": "^4.7.3"
   },
   "name": "textlint-rule-period-in-list-item-with-morpheme-match",
   "directories": {
