@@ -1,12 +1,8 @@
 # textlint-rule-period-in-list-item-with-morpheme-match
 
-
-
 ## Install
 
-Install with [npm](https://www.npmjs.com/):
-
-    npm install textlint-rule-period-in-list-item-with-morpheme-match
+Install with GitHub
 
 ## Usage
 
