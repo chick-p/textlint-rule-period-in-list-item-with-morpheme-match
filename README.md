@@ -2,9 +2,7 @@
 
 ## Install
 
-Install with [npm](https://www.npmjs.com/):
-
-    npm install textlint-rule-period-in-list-item-with-morpheme-match
+Install with GitHub
 
 ## Usage
 
@@ -20,7 +18,7 @@ Via `.textlintrc`(Recommended)
 
 Via CLI
 
-```
+```shell
 textlint --rule period-in-list-item-with-morpheme-match README.md
 ```
 
@@ -29,14 +27,18 @@ textlint --rule period-in-list-item-with-morpheme-match README.md
 Builds source codes for publish to the `lib` folder.
 You can write ES2015+ source codes in `src/` folder.
 
-    npm run build
+```shell
+npm run build
+```
 
 ### Tests
 
 Run test code in `test` folder.
 Test textlint rule by [textlint-tester](https://github.com/textlint/textlint-tester).
 
-    npm test
+```shell
+npm test
+```
 
 ## License
 
