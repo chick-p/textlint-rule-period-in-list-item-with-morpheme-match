@@ -1,0 +1,33 @@
+{
+  "version": "0.1.0",
+  "private": true,
+  "keywords": [
+    "textlintrule"
+  ],
+  "main": "lib/index.js",
+  "files": [
+    "lib/",
+    "src/"
+  ],
+  "scripts": {
+    "test": "textlint-scripts test",
+    "build": "textlint-scripts build",
+    "prepublish": "npm run --if-present build",
+    "watch": "textlint-scripts build --watch"
+  },
+  "devDependencies": {
+    "@textlint/types": "^12.1.1",
+    "@types/node": "^15.6.0",
+    "textlint-scripts": "^12.1.1",
+    "textlint-tester": "^12.1.1",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.2.4"
+  },
+  "name": "textlint-rule-period-in-list-item-with-morpheme-match",
+  "directories": {
+    "test": "test"
+  },
+  "author": "chick-p",
+  "license": "MIT",
+  "description": ""
+}
