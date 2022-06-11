@@ -1,31 +1,54 @@
 import { TextlintRuleModule } from "@textlint/types";
+// @ts-ignore
+import checkEndsWithPeriod from "check-ends-with-period";
 
 export interface Options {
-  // if the Str includes `allows` word, does not report it
-  allows?: string[];
+  periodMarks: string[];
+  preferPeriodMark: string;
 }
 
+const defaultOptions: Options = {
+  periodMarks: ["。", "."],
+  preferPeriodMark: "。",
+};
+// @ts-ignore
 const report: TextlintRuleModule<Options> = (context, options = {}) => {
-  const { Syntax, RuleError, report, getSource } = context;
-  const allows = options.allows || [];
+  const { Syntax, RuleError, report, fixer, getSource } = context;
+  const periodMarks = options.periodMarks || defaultOptions.periodMarks;
+  const preferPeriodMark =
+    options.preferPeriodMark || defaultOptions.preferPeriodMark;
   return {
-    [Syntax.Str](node) {
-      // "Str" node
-      const text = getSource(node); // Get text
-      const matches = /bugs/g.exec(text); // Found "bugs"
-      if (!matches) {
-        return;
-      }
-      const isIgnored = allows.some((allow) => text.includes(allow));
-      if (isIgnored) {
-        return;
-      }
-      const indexOfBugs = matches.index;
-      const ruleError = new RuleError("Found bugs.", {
-        index: indexOfBugs, // padding of index
+    async [Syntax.ListItem](node) {
+      const paragraphNodes = node.children.filter(
+        (node) => node.type === Syntax.Paragraph
+      );
+      const [firstParagraphNode] = paragraphNodes;
+      const text = getSource(firstParagraphNode);
+      const { valid, index } = checkEndsWithPeriod(text, {
+        periodMarks,
       });
-      report(node, ruleError);
+      if (valid) {
+        return;
+      }
+      report(
+        firstParagraphNode,
+        new RuleError(
+          `Not exist period mark("${preferPeriodMark}") at end of list item.`,
+          {
+            index,
+            fix: fixer.replaceTextRange(
+              [index + 1, index + 1],
+              preferPeriodMark
+            ),
+          }
+        )
+      );
+      return;
     },
   };
 };
-export default report;
+
+export default {
+  linter: report,
+  fixer: report,
+};
