@@ -44,6 +44,7 @@
   "license": "MIT",
   "description": "",
   "dependencies": {
-    "check-ends-with-period": "^1.0.1"
+    "check-ends-with-period": "^1.0.1",
+    "kuromojin": "^3.0.0"
   }
 }
