@@ -1,45 +1,61 @@
 import TextLintTester from "textlint-tester";
 import rule from "../src/index";
 const tester = new TextLintTester();
-// ruleName, rule, { valid, invalid }
+// @ts-ignore
 tester.run("rule", rule, {
   valid: [
-    // no problem
-    "text",
+    `text.`,
     {
-      text: "It is bugs, but it should be ignored",
-      options: {
-        allows: ["it should be ignored"],
-      },
+      text: `* Item.`,
+    },
+    {
+      text: `* Item1.\n* Item2.`,
+    },
+    ,
+    {
+      text: `* Item1.\n  * Item1-1.`,
     },
   ],
   invalid: [
-    // single match
     {
-      text: "It is bugs.",
+      text: `* Item`,
+      output: `* Item.`,
+      options: {
+        preferPeriodMark: ".",
+      },
       errors: [
         {
-          message: "Found bugs.",
+          message: `Not exist period mark(".") at end of list item.`,
           line: 1,
+          column: 6,
+        },
+      ],
+    },
+    {
+      text: `* Item1.\n* Item2`,
+      output: `* Item1.\n* Item2.`,
+      options: {
+        preferPeriodMark: ".",
+      },
+      errors: [
+        {
+          message: `Not exist period mark(".") at end of list item.`,
+          line: 2,
           column: 7,
         },
       ],
     },
-    // multiple match
     {
-      text: `It has many bugs.
-
-One more bugs`,
+      text: `* Item1.\n  * Item1-1`,
+      output: `* Item1.\n  * Item1-1.`,
+      options: {
+        preferPeriodMark: ".",
+      },
       errors: [
         {
-          message: "Found bugs.",
-          line: 1,
-          column: 13,
-        },
-        {
-          message: "Found bugs.",
-          line: 3,
-          column: 10,
+          message: `Not exist period mark(".") at end of list item.`,
+          line: 2,
+          column: 11,
         },
       ],
     },
