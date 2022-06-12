@@ -1,45 +1,91 @@
 import TextLintTester from "textlint-tester";
 import rule from "../src/index";
 const tester = new TextLintTester();
-// ruleName, rule, { valid, invalid }
+// @ts-ignore
 tester.run("rule", rule, {
   valid: [
-    // no problem
-    "text",
+    `text.`,
     {
-      text: "It is bugs, but it should be ignored",
-      options: {
-        allows: ["it should be ignored"],
-      },
+      text: `* 項目`,
+    },
+    {
+      text: `* 項目1\n* 項目2`,
+    },
+    {
+      text: `* 項目1\n  * 項目1-1`,
+    },
+    {
+      text: "* `ITEM`：項目",
+    },
+    {
+      text: "* `ITEM`：項目（その他）",
+    },
+    {
+      text: "* `ITEM1`：1番目の項目\n* `ITEM2`：2番目の項目",
+    },
+    {
+      text: `* 項目を追加します。`,
+    },
+    {
+      text: `1. 項目を追加します。`,
+    },
+    {
+      text: `* 項目を追加します。\n  * 項目を追加します。`,
     },
   ],
   invalid: [
-    // single match
     {
-      text: "It is bugs.",
+      text: `* 項目を追加します`,
       errors: [
         {
-          message: "Found bugs.",
+          message: `Not exist period mark("。") at end of list item.`,
           line: 1,
-          column: 7,
+          column: 3,
         },
       ],
     },
-    // multiple match
     {
-      text: `It has many bugs.
-
-One more bugs`,
+      text: `1. 項目を追加します`,
       errors: [
         {
-          message: "Found bugs.",
+          message: `Not exist period mark("。") at end of list item.`,
           line: 1,
-          column: 13,
+          column: 4,
+        },
+      ],
+    },
+    {
+      text: `* 項目\n* 項目です`,
+      errors: [
+        {
+          message: `Not exist period mark("。") at end of list item.`,
+          line: 2,
+          column: 3,
+        },
+      ],
+    },
+    {
+      text: `* 項目を追加します\n* 項目を追加します`,
+      errors: [
+        {
+          message: `Not exist period mark("。") at end of list item.`,
+          line: 1,
+          column: 3,
         },
         {
-          message: "Found bugs.",
-          line: 3,
-          column: 10,
+          message: `Not exist period mark("。") at end of list item.`,
+          line: 2,
+          column: 3,
+        },
+      ],
+    },
+    {
+      text: `* 項目を追加します。\n* 項目を追加します`,
+      errors: [
+        {
+          message: `Not exist period mark("。") at end of list item.`,
+          line: 2,
+          column: 3,
         },
       ],
     },
