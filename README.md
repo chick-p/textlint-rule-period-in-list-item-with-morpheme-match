@@ -24,6 +24,17 @@ Via CLI
 textlint --rule period-in-list-item-with-morpheme-match README.md
 ```
 
+## Options
+
+```json
+{
+  // recognized list of period mark
+  "periodMarks": ["。", "."],
+  // Ignore to check sentence if morpheme of the last word is in this list
+  "allowPosWithoutPeriod": ["名詞", "記号"]
+}
+```
+
 ### Build
 
 Builds source codes for publish to the `lib` folder.
