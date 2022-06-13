@@ -56,3 +56,10 @@ npm test
 ## License
 
 MIT © chick-p
+
+This rule is implemented based on [textlint-rule/textlint-rule-period-in-list-item](https://github.com/textlint-rule/textlint-rule-period-in-list-item/).
+
+## Related rule
+
+- [textlint-rule/textlint-rule-period-in-list-item](https://github.com/textlint-rule/textlint-rule-period-in-list-item/)
+- [textlint-ja/textlint-rule-ja-no-mixed-period: 文末の句点(。)の統一 と 抜けをチェックするtextlintルール](https://github.com/textlint-ja/textlint-rule-ja-no-mixed-period/)
