@@ -35,6 +35,78 @@ tester.run("rule", rule, {
   ],
   invalid: [
     {
+      text: `* 項目。`,
+      errors: [
+        {
+          message: `Should remove period mark("。") at end of list item.`,
+          line: 1,
+          column: 5,
+        },
+      ],
+    },
+    {
+      text: `* 項目！`,
+      options: {
+        periodMarks: ["！"],
+      },
+      errors: [
+        {
+          message: `Should remove period mark("！") at end of list item.`,
+          line: 1,
+          column: 5,
+        },
+      ],
+    },
+    {
+      text: `* 項目。`,
+      output: `* 項目`,
+      options: {
+        isRemovePeriod: true,
+      },
+      errors: [
+        {
+          message: `Should remove period mark("。") at end of list item.`,
+          line: 1,
+          column: 5,
+        },
+      ],
+    },
+    ,
+    {
+      text: `* 項目！`,
+      output: `* 項目`,
+      options: {
+        isRemovePeriod: true,
+        periodMarks: ["！"],
+      },
+      errors: [
+        {
+          message: `Should remove period mark("！") at end of list item.`,
+          line: 1,
+          column: 5,
+        },
+      ],
+    },
+    {
+      text: `* 項目。\n* 項目。`,
+      output: `* 項目\n* 項目`,
+      options: {
+        isRemovePeriod: true,
+      },
+      errors: [
+        {
+          message: `Should remove period mark("。") at end of list item.`,
+          line: 1,
+          column: 5,
+        },
+        {
+          message: `Should remove period mark("。") at end of list item.`,
+          line: 2,
+          column: 5,
+        },
+      ],
+    },
+    {
       text: `* 項目を追加します`,
       errors: [
         {
