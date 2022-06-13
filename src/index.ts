@@ -6,6 +6,7 @@ import { tokenize } from "kuromojin";
 export interface Options {
   periodMarks: string[];
   isAppendPeriod: boolean;
+  isRemovePeriod: boolean;
   preferPeriodMark: string;
   allowPosWithoutPeriod: string[];
 }
@@ -13,6 +14,7 @@ export interface Options {
 const defaultOptions: Options = {
   periodMarks: ["。", "."],
   isAppendPeriod: false,
+  isRemovePeriod: false,
   preferPeriodMark: "。",
   allowPosWithoutPeriod: ["名詞", "記号"],
 };
@@ -23,6 +25,8 @@ const report: TextlintRuleModule<Options> = (context, options = {}) => {
   const periodMarks = options.periodMarks || defaultOptions.periodMarks;
   const isAppendPeriod =
     options.isAppendPeriod || defaultOptions.isAppendPeriod;
+  const isRemovePeriod =
+    options.isRemovePeriod || defaultOptions.isRemovePeriod;
   const preferPeriodMark =
     options.preferPeriodMark || defaultOptions.preferPeriodMark;
   const allowPosWithoutPeriod =
@@ -44,10 +48,22 @@ const report: TextlintRuleModule<Options> = (context, options = {}) => {
         // if a sentense has a period though disallow part of speech
         const lastToken = tokens.at(-2);
         if (lastToken && allowPosWithoutPeriod.includes(lastToken.pos)) {
+          let fix;
+          const foundPeriodMark = text[index];
+          if (isRemovePeriod) {
+            fix = fixer.replaceTextRange(
+              [index, index + foundPeriodMark.length],
+              ""
+            );
+          }
           report(
             firstParagraphNode,
             new RuleError(
-              `Shoud remove period mark("${preferPeriodMark}") at end of list item.`
+              `Should remove period mark("${foundPeriodMark}") at end of list item.`,
+              {
+                index,
+                fix,
+              }
             )
           );
           return;
