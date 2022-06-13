@@ -30,6 +30,12 @@ textlint --rule period-in-list-item-with-morpheme-match README.md
 {
   // recognized list of period mark
   "periodMarks": ["。", "."],
+  // If add period at end of list item you set to `true`
+  "isAppendPeriod": false,
+  // This mark is append if `isAppendPeriod` is true.
+  "preferPeriodMark": "。",
+  // If remove the found period at end of list item you set to `true`
+  "isRemovePeriod": false,
   // Ignore to check sentence if morpheme of the last word is in this list
   "allowPosWithoutPeriod": ["名詞", "記号"]
 }
