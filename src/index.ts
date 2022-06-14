@@ -1,3 +1,4 @@
+import { TxtNode } from "@textlint/ast-node-types";
 import { TextlintRuleModule } from "@textlint/types";
 // @ts-ignore
 import checkEndsWithPeriod from "check-ends-with-period";
@@ -34,65 +35,67 @@ const report: TextlintRuleModule<Options> = (context, options = {}) => {
   return {
     async [Syntax.ListItem](node) {
       const paragraphNodes = node.children.filter(
-        (node) => node.type === Syntax.Paragraph
+        (n) => n.type === Syntax.Paragraph
       );
       const [firstParagraphNode] = paragraphNodes;
-      const text = getSource(firstParagraphNode);
+      let childStrNodes = firstParagraphNode.children.filter(
+        (n: TxtNode) => n.type === Syntax.Str
+      );
+      for (const strNode of childStrNodes) {
+        const text = getSource(strNode);
+        const { valid: hasPeriod, index } = checkEndsWithPeriod(text, {
+          periodMarks,
+          allowExceptionMark: false,
+        });
+        const tokens = await tokenize(text);
 
-      const { valid: hasPeriod, index } = checkEndsWithPeriod(text, {
-        periodMarks,
-        allowExceptionMark: false,
-      });
-      const tokens = await tokenize(text);
-      if (hasPeriod) {
-        // if a sentense has a period though disallow part of speech
-        const lastToken = tokens.at(-2);
-        if (lastToken && allowPosWithoutPeriod.includes(lastToken.pos)) {
+        if (hasPeriod) {
+          // if a sentense has a period though disallow part of speech
+          const lastToken = tokens.at(-2);
+          if (lastToken && allowPosWithoutPeriod.includes(lastToken.pos)) {
+            let fix;
+            const foundPeriodMark = text[index];
+            if (isRemovePeriod) {
+              fix = fixer.replaceTextRange(
+                [index, index + foundPeriodMark.length],
+                ""
+              );
+            }
+            report(
+              strNode,
+              new RuleError(
+                `Should remove period mark("${foundPeriodMark}") at end of list item.`,
+                {
+                  index,
+                  fix,
+                }
+              )
+            );
+          }
+          return;
+        }
+        // if a sentence has not a period though without period
+        const lastToken = tokens.at(-1);
+        if (lastToken && !allowPosWithoutPeriod.includes(lastToken.pos)) {
           let fix;
-          const foundPeriodMark = text[index];
-          if (isRemovePeriod) {
+          if (isAppendPeriod) {
             fix = fixer.replaceTextRange(
-              [index, index + foundPeriodMark.length],
-              ""
+              [index + 1, index + 1],
+              preferPeriodMark
             );
           }
           report(
-            firstParagraphNode,
+            strNode,
             new RuleError(
-              `Should remove period mark("${foundPeriodMark}") at end of list item.`,
+              `Not exist period mark("${preferPeriodMark}") at end of list item.`,
               {
                 index,
                 fix,
               }
             )
           );
-          return;
         }
-        return;
       }
-      // if a sentence has not a period though without period
-      const lastToken = tokens.at(-1);
-      if (lastToken && !allowPosWithoutPeriod.includes(lastToken.pos)) {
-        let fix;
-        if (isAppendPeriod) {
-          fix = fixer.replaceTextRange(
-            [index + 1, index + 1],
-            preferPeriodMark
-          );
-        }
-        report(
-          firstParagraphNode,
-          new RuleError(
-            `Not exist period mark("${preferPeriodMark}") at end of list item.`,
-            {
-              index,
-              fix,
-            }
-          )
-        );
-        return;
-      }
-      return;
     },
   };
 };
