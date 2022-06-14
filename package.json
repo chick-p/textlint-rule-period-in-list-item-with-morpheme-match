@@ -10,6 +10,7 @@
     "src/"
   ],
   "scripts": {
+    "prepare": "npm run build",
     "test": "textlint-scripts test",
     "build": "textlint-scripts build",
     "prepublish": "npm run --if-present build",
