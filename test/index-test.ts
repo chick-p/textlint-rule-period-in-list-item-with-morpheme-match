@@ -1,3 +1,4 @@
+import path from "path";
 import TextLintTester from "textlint-tester";
 import rule from "../src/index";
 const tester = new TextLintTester();
@@ -10,6 +11,9 @@ tester.run("rule", rule, {
     },
     {
       text: `* 項目1\n* 項目2`,
+    },
+    {
+      text: `* 項目1\n  説明です。`,
     },
     {
       text: `* 項目1\n  * 項目1-1`,
@@ -188,6 +192,44 @@ tester.run("rule", rule, {
           message: `Not exist period mark("。") at end of list item.`,
           line: 2,
           column: 12,
+        },
+      ],
+    },
+    {
+      inputPath: path.join(__dirname, "fixtures/invalid/multiline.md"),
+      output:
+        "# NG\n" +
+        "\n" +
+        "- 項目です。  \n" +
+        "  これは説明です。  \n" +
+        "  これも説明です。\n" +
+        "  - 項目その 2 です。\n" +
+        "  - 項目その 3 です。\n" +
+        "  - 項目その 4\n",
+      options: {
+        isAppendPeriod: true,
+        isRemovePeriod: true,
+      },
+      errors: [
+        {
+          message: `Not exist period mark("。") at end of list item.`,
+          line: 3,
+          column: 6,
+        },
+        {
+          message: `Not exist period mark("。") at end of list item.`,
+          line: 4,
+          column: 9,
+        },
+        {
+          message: `Not exist period mark("。") at end of list item.`,
+          line: 7,
+          column: 13,
+        },
+        {
+          message: `Should remove period mark("。") at end of list item.`,
+          line: 8,
+          column: 11,
         },
       ],
     },
