@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "@textlint/types": "^12.2.1",
-    "@types/node": "^18.7.2",
+    "@types/node": "^18.7.13",
     "@typescript-eslint/eslint-plugin": "^5.30.5",
     "@typescript-eslint/parser": "^5.30.7",
     "eslint": "^8.21.0",
