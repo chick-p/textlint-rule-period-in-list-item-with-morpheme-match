@@ -1268,11 +1268,6 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@textlint/ast-node-types@^12.2.1":
-  version "12.2.1"
-  resolved "https://registry.yarnpkg.com/@textlint/ast-node-types/-/ast-node-types-12.2.1.tgz#bec1e4b02e97ff1167d057c71feeee1a80015aef"
-  integrity sha512-NXYza6aG1+LdZ4g83gjRhDht+gdrTjJYkdcQhpvzNCtTar/sVpaykkauRcAKLhkIWrQpfb311pfMlU6qNDW76Q==
-
 "@textlint/ast-node-types@^12.2.2":
   version "12.2.2"
   resolved "https://registry.yarnpkg.com/@textlint/ast-node-types/-/ast-node-types-12.2.2.tgz#299c4035d26a2be8fe76bcb66798a8e82a5eb77c"
@@ -1400,13 +1395,6 @@
   integrity sha512-0HLOr9kQRXKqEcZvIaNAnOhixNfTSpveOHBuhHepByDXkXcUrb+BJdxZzhtgVu4twBAR3qJ3KYhDE8XPHc9iDg==
   dependencies:
     "@textlint/text-to-ast" "^12.2.2"
-
-"@textlint/types@^12.2.1":
-  version "12.2.1"
-  resolved "https://registry.yarnpkg.com/@textlint/types/-/types-12.2.1.tgz#e802689c7fb09dd699783ab29f8bdfddb89102e2"
-  integrity sha512-nOQ3udAz9ulDZgETFY3vr3R+ubL2cevPLA3GmDs29ErvIHfK3pD+PpyO/OsS7HZKXolmpuMonVA9+J9Jybf3/Q==
-  dependencies:
-    "@textlint/ast-node-types" "^12.2.1"
 
 "@textlint/types@^12.2.2":
   version "12.2.2"
