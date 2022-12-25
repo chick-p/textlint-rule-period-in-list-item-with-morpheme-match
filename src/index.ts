@@ -1,7 +1,6 @@
 import { TxtNode } from "@textlint/ast-node-types";
 import { TextlintRuleModule } from "@textlint/types";
-// @ts-ignore
-import checkEndsWithPeriod from "check-ends-with-period";
+import { checkEndsWithPeriod } from "check-ends-with-period";
 import { tokenize } from "kuromojin";
 
 export interface Options {
@@ -43,12 +42,17 @@ const report: TextlintRuleModule<Options> = (context, options = {}) => {
       );
       for (const strNode of childStrNodes) {
         const text = getSource(strNode);
-        const { valid: hasPeriod, index } = checkEndsWithPeriod(text, {
+
+        const result = checkEndsWithPeriod(text, {
           periodMarks,
           allowExceptionMark: false,
         });
-        const tokens = await tokenize(text);
+        if (!result) {
+          continue;
+        }
+        const { valid: hasPeriod, index } = result;
 
+        const tokens = await tokenize(text);
         if (hasPeriod) {
           // if a sentense has a period though disallow part of speech
           const lastToken = tokens.at(-2);
