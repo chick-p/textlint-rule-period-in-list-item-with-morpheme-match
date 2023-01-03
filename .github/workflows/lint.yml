@@ -1,9 +1,10 @@
-name: lint
+name: Run ESLint
+
 on:
   pull_request:
 
 jobs:
-  lint:
-    uses: chick-p/github-actions-shared-workflow/.github/workflows/lint.yml@main
+  call:
+    uses: chick-p/github-actions-shared-workflow/.github/workflows/run-npm-script.yml@main
     with:
       script_name: "lint"

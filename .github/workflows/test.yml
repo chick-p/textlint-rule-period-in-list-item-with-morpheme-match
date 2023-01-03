@@ -1,24 +1,13 @@
-name: test
+name: Run Test
+
 on:
   push:
     branches:
       - main
-      - "dependabot/**"
   pull_request:
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-
-      - name: yarn install
-        run: yarn install
-
-      - name: yarn test
-        run: yarn test
+  call:
+    uses: chick-p/github-actions-shared-workflow/.github/workflows/run-npm-script.yml@main
+    with:
+      script_name: "test"

@@ -6,5 +6,5 @@ on:
       - opened
 
 jobs:
-  lint:
+  call:
     uses: chick-p/github-actions-shared-workflow/.github/workflows/dependabot-automerge.yml@main
