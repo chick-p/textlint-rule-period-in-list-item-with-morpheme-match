@@ -135,6 +135,20 @@ tester.run("rule", rule, {
       ],
     },
     {
+      text: `* 項目を追加します  `,
+      output: `* 項目を追加します。  `,
+      options: {
+        isAppendPeriod: true,
+      },
+      errors: [
+        {
+          message: `Not exist period mark("。") at end of list item.`,
+          line: 1,
+          column: 10,
+        },
+      ],
+    },
+    {
       text: `1. 項目を追加します`,
       output: `1. 項目を追加します。`,
       options: {
