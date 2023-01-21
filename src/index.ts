@@ -50,7 +50,7 @@ const report: TextlintRuleModule<Options> = (context, options = {}) => {
         if (!result) {
           continue;
         }
-        const { valid: hasPeriod, index } = result;
+        const { valid: hasPeriod, index, periodMark } = result;
 
         const tokens = await tokenize(text);
         if (hasPeriod) {
@@ -83,10 +83,18 @@ const report: TextlintRuleModule<Options> = (context, options = {}) => {
         if (lastToken && !allowPosWithoutPeriod.includes(lastToken.pos)) {
           let fix;
           if (isAppendPeriod) {
-            fix = fixer.replaceTextRange(
-              [index + 1, index + 1],
-              preferPeriodMark
-            );
+            if(periodMark === "") {
+              fix = fixer.replaceText(
+                node,
+                preferPeriodMark
+              );
+
+            } else {
+              fix = fixer.replaceTextRange(
+                [index + 1, index + 1],
+                preferPeriodMark
+              );
+            }
           }
           report(
             strNode,
