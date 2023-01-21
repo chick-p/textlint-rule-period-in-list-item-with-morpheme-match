@@ -83,12 +83,8 @@ const report: TextlintRuleModule<Options> = (context, options = {}) => {
         if (lastToken && !allowPosWithoutPeriod.includes(lastToken.pos)) {
           let fix;
           if (isAppendPeriod) {
-            if(periodMark === "") {
-              fix = fixer.replaceText(
-                node,
-                preferPeriodMark
-              );
-
+            if (periodMark === "") {
+              fix = fixer.replaceText(node, preferPeriodMark);
             } else {
               fix = fixer.replaceTextRange(
                 [index + 1, index + 1],
