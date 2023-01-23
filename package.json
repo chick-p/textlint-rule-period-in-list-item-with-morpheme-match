@@ -24,7 +24,7 @@
     "fix:eslint": "npm run lint:eslint --fix"
   },
   "devDependencies": {
-    "@textlint/types": "^12.5.0",
+    "@textlint/types": "^12.6.0",
     "@types/node": "^18.11.18",
     "@typescript-eslint/eslint-plugin": "^5.48.2",
     "@typescript-eslint/parser": "^5.48.2",
