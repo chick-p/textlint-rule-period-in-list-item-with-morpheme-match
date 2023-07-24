@@ -34,11 +34,11 @@ const report: TextlintRuleModule<Options> = (context, options = {}) => {
   return {
     async [Syntax.ListItem](node) {
       const paragraphNodes = node.children.filter(
-        (n) => n.type === Syntax.Paragraph
+        (n) => n.type === Syntax.Paragraph,
       );
       const [firstParagraphNode] = paragraphNodes;
       let childStrNodes = firstParagraphNode.children.filter(
-        (n: TxtNode) => n.type === Syntax.Str
+        (n: TxtNode) => n.type === Syntax.Str,
       );
       for (const strNode of childStrNodes) {
         const text = getSource(strNode);
@@ -62,7 +62,7 @@ const report: TextlintRuleModule<Options> = (context, options = {}) => {
             if (isRemovePeriod) {
               fix = fixer.replaceTextRange(
                 [index, index + foundPeriodMark.length],
-                ""
+                "",
               );
             }
             report(
@@ -72,8 +72,8 @@ const report: TextlintRuleModule<Options> = (context, options = {}) => {
                 {
                   index,
                   fix,
-                }
-              )
+                },
+              ),
             );
           }
           return;
@@ -88,7 +88,7 @@ const report: TextlintRuleModule<Options> = (context, options = {}) => {
             } else {
               fix = fixer.replaceTextRange(
                 [index + 1, index + 1],
-                preferPeriodMark
+                preferPeriodMark,
               );
             }
           }
@@ -99,8 +99,8 @@ const report: TextlintRuleModule<Options> = (context, options = {}) => {
               {
                 index,
                 fix,
-              }
-            )
+              },
+            ),
           );
         }
       }
