@@ -22,3 +22,9 @@ updates:
           - "eslint-config-*"
           - "eslint-plugin-*"
           - "@typescript-eslint/*"
+      textlint:
+        patterns:
+          - "textlint"
+          - "textlint-scripts"
+          - "textlint-tester"
+          - "@textlint/*"
