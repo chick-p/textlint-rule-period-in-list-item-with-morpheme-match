@@ -1,4 +1,4 @@
-import { TxtNode } from "@textlint/ast-node-types";
+import { TxtNode, TxtParagraphNode } from "@textlint/ast-node-types";
 import { TextlintRuleModule } from "@textlint/types";
 import { checkEndsWithPeriod } from "check-ends-with-period";
 import { tokenize } from "kuromojin";
@@ -37,7 +37,7 @@ const report: TextlintRuleModule<Options> = (context, options = {}) => {
         (n) => n.type === Syntax.Paragraph,
       );
       const [firstParagraphNode] = paragraphNodes;
-      let childStrNodes = firstParagraphNode.children.filter(
+      let childStrNodes = (firstParagraphNode as TxtParagraphNode).children.filter(
         (n: TxtNode) => n.type === Syntax.Str,
       );
       for (const strNode of childStrNodes) {
