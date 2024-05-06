@@ -45,6 +45,12 @@ tester.run("rule", rule, {
     {
       text: "* 詳細は**column**を参照してください。",
     },
+    {
+      text: "* 詳細は**太字です**。",
+    },
+    {
+      text: "* 詳細は**太字です。**",
+    },
   ],
   invalid: [
     {
@@ -252,6 +258,20 @@ tester.run("rule", rule, {
         {
           message: `Should remove period mark("。") at end of list item.`,
           line: 8,
+          column: 11,
+        },
+      ],
+    },
+    {
+      text: "* 詳細は**太字です**",
+      output: "* 詳細は**太字です。**",
+      options: {
+        isAppendPeriod: true,
+      },
+      errors: [
+        {
+          message: `Not exist period mark("。") at end of list item.`,
+          line: 1,
           column: 11,
         },
       ],
