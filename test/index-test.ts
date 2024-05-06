@@ -36,6 +36,24 @@ tester.run("rule", rule, {
     {
       text: `* 項目を追加します。\n  * 項目を追加します。`,
     },
+    {
+      text: "* 項目には`column`を使用します。",
+    },
+    {
+      text: "* 詳細は[column](https://example.com)を参照してください。",
+    },
+    {
+      text: "* 詳細は**column**を参照してください。",
+    },
+    {
+      text: "* 詳細は**太字です**。",
+    },
+    {
+      text: "* 詳細は**太字です。**",
+    },
+    {
+      inputPath: path.join(__dirname, "fixtures/valid/multiparagraph.md"),
+    },
   ],
   invalid: [
     {
@@ -243,6 +261,40 @@ tester.run("rule", rule, {
         {
           message: `Should remove period mark("。") at end of list item.`,
           line: 8,
+          column: 11,
+        },
+      ],
+    },
+    {
+      text: "* 詳細は**太字です**",
+      output: "* 詳細は**太字です。**",
+      options: {
+        isAppendPeriod: true,
+      },
+      errors: [
+        {
+          message: `Not exist period mark("。") at end of list item.`,
+          line: 1,
+          column: 11,
+        },
+      ],
+    },
+    {
+      inputPath: path.join(__dirname, "fixtures/invalid/multiparagraph.md"),
+      output:
+        "# NG\n" +
+        "\n" +
+        "- これは1段落目です。\n" +
+        "\n" +
+        "  これは2段落目です。  \n" +
+        "  2段目の続きです。\n",
+      options: {
+        isAppendPeriod: true,
+      },
+      errors: [
+        {
+          message: `Not exist period mark("。") at end of list item.`,
+          line: 5,
           column: 11,
         },
       ],

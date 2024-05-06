@@ -1,4 +1,9 @@
-import { TxtNode, TxtParagraphNode } from "@textlint/ast-node-types";
+import {
+  TxtParagraphNode,
+  ASTNodeTypes,
+  TxtStrNode,
+} from "@textlint/ast-node-types";
+import { TxtParentNode } from "@textlint/ast-node-types/lib/src/NodeType";
 import { TextlintRuleModule } from "@textlint/types";
 import { checkEndsWithPeriod } from "check-ends-with-period";
 import { tokenize } from "kuromojin";
@@ -19,6 +24,44 @@ const defaultOptions: Options = {
   allowPosWithoutPeriod: ["名詞", "記号"],
 };
 
+const collectLastStrNodes = (paragraphNode: TxtParagraphNode): TxtStrNode[] => {
+  const lastStrNodes = [];
+  let lastStrNode = null;
+  for (const child of paragraphNode.children) {
+    if (child.type === ASTNodeTypes.Break) {
+      // LineBreak
+      if (lastStrNode !== null) {
+        lastStrNodes.push(lastStrNode);
+      }
+      continue;
+    }
+
+    if (child.type === ASTNodeTypes.Str) {
+      // Text
+      const strNode = child as TxtStrNode;
+      lastStrNode = strNode;
+      continue;
+    }
+
+    const txtParentNode = child as TxtParentNode;
+    if (txtParentNode !== null) {
+      // Emphasis, Code, Link etc...
+      txtParentNode.children?.forEach((grandchild) => {
+        if (grandchild.type === ASTNodeTypes.Str) {
+          lastStrNode = grandchild as TxtStrNode;
+        }
+      });
+      continue;
+    }
+  }
+
+  if (lastStrNode !== null) {
+    lastStrNodes.push(lastStrNode);
+  }
+
+  return lastStrNodes;
+};
+
 // @ts-ignore
 const report: TextlintRuleModule<Options> = (context, options = {}) => {
   const { Syntax, RuleError, report, fixer, getSource } = context;
@@ -32,17 +75,18 @@ const report: TextlintRuleModule<Options> = (context, options = {}) => {
   const allowPosWithoutPeriod =
     options.allowPosWithoutPeriod || defaultOptions.allowPosWithoutPeriod;
   return {
-    async [Syntax.ListItem](node) {
-      const paragraphNodes = node.children.filter(
-        (n) => n.type === Syntax.Paragraph,
-      );
-      const [firstParagraphNode] = paragraphNodes;
-      let childStrNodes = (
-        firstParagraphNode as TxtParagraphNode
-      ).children.filter((n: TxtNode) => n.type === Syntax.Str);
-      for (const strNode of childStrNodes) {
-        const text = getSource(strNode);
+    async [Syntax.Paragraph](node) {
+      // only check list items
+      if (node.parent?.type !== ASTNodeTypes.ListItem) {
+        return;
+      }
 
+      const paragraphNode = node as TxtParagraphNode;
+
+      const strNodes = collectLastStrNodes(paragraphNode);
+
+      for (const strNode of strNodes) {
+        const text = getSource(strNode);
         const result = checkEndsWithPeriod(text, {
           periodMarks,
           allowExceptionMark: false,
