@@ -51,6 +51,9 @@ tester.run("rule", rule, {
     {
       text: "* 詳細は**太字です。**",
     },
+    {
+      inputPath: path.join(__dirname, "fixtures/valid/multiparagraph.md"),
+    },
   ],
   invalid: [
     {
@@ -272,6 +275,26 @@ tester.run("rule", rule, {
         {
           message: `Not exist period mark("。") at end of list item.`,
           line: 1,
+          column: 11,
+        },
+      ],
+    },
+    {
+      inputPath: path.join(__dirname, "fixtures/invalid/multiparagraph.md"),
+      output:
+        "# NG\n" +
+        "\n" +
+        "* これは1段落目です。\n" +
+        "\n" +
+        "  これは2段落目です。  \n" +
+        "  2段目の続きです。\n",
+      options: {
+        isAppendPeriod: true,
+      },
+      errors: [
+        {
+          message: `Not exist period mark("。") at end of list item.`,
+          line: 5,
           column: 11,
         },
       ],
