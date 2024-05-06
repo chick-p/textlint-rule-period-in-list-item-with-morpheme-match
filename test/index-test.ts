@@ -36,6 +36,15 @@ tester.run("rule", rule, {
     {
       text: `* 項目を追加します。\n  * 項目を追加します。`,
     },
+    {
+      text: "* 項目には`column`を使用します。",
+    },
+    {
+      text: "* 詳細は[column](https://example.com)を参照してください。",
+    },
+    {
+      text: "* 詳細は**column**を参照してください。",
+    },
   ],
   invalid: [
     {
