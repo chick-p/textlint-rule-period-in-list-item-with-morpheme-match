@@ -54,6 +54,15 @@ tester.run("rule", rule, {
     {
       inputPath: path.join(__dirname, "fixtures/valid/multiparagraph.md"),
     },
+    {
+      text: "* [リンクです](https://example.com)",
+    },
+    {
+      text: "* これは[リンクです](https://example.com)",
+    },
+    {
+      text: "* これは[リンクです](https://example.com)ね。",
+    },
   ],
   invalid: [
     {
@@ -296,6 +305,20 @@ tester.run("rule", rule, {
           message: `Not exist period mark("。") at end of list item.`,
           line: 5,
           column: 11,
+        },
+      ],
+    },
+    {
+      text: "* これは[リンクです](https://example.com)ね",
+      output: "* これは[リンクです](https://example.com)ね。",
+      options: {
+        isAppendPeriod: true,
+      },
+      errors: [
+        {
+          message: `Not exist period mark("。") at end of list item.`,
+          line: 1,
+          column: 34,
         },
       ],
     },

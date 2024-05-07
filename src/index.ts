@@ -43,9 +43,15 @@ const collectLastStrNodes = (paragraphNode: TxtParagraphNode): TxtStrNode[] => {
       continue;
     }
 
+    if (child.type === ASTNodeTypes.Link) {
+      // Link
+      lastStrNode = null;
+      continue;
+    }
+
     const txtParentNode = child as TxtParentNode;
     if (txtParentNode !== null) {
-      // Emphasis, Code, Link etc...
+      // Emphasis, Strong, Code etc...
       txtParentNode.children?.forEach((grandchild) => {
         if (grandchild.type === ASTNodeTypes.Str) {
           lastStrNode = grandchild as TxtStrNode;
