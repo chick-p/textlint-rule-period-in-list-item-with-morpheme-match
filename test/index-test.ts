@@ -63,6 +63,18 @@ tester.run("rule", rule, {
     {
       text: "* これは[リンクです](https://example.com)ね。",
     },
+    {
+      text: "* `code`",
+    },
+    {
+      text: "* これは`code`",
+    },
+    {
+      text: "* これは`code`ですね。",
+    },
+    {
+      text: "* これは`code`と`code`です。",
+    },
   ],
   invalid: [
     {
@@ -319,6 +331,20 @@ tester.run("rule", rule, {
           message: `Not exist period mark("。") at end of list item.`,
           line: 1,
           column: 34,
+        },
+      ],
+    },
+    {
+      text: "* これは`code`と`code`ですね",
+      output: "* これは`code`と`code`ですね。",
+      options: {
+        isAppendPeriod: true,
+      },
+      errors: [
+        {
+          message: `Not exist period mark("。") at end of list item.`,
+          line: 1,
+          column: 21,
         },
       ],
     },
