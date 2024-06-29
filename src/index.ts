@@ -68,6 +68,7 @@ const collectLastStrNodes = (paragraphNode: TxtParagraphNode): TxtStrNode[] => {
   return lastStrNodes;
 };
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const report: TextlintRuleModule<Options> = (context, options = {}) => {
   const { Syntax, RuleError, report, fixer, getSource } = context;
