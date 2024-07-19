@@ -34,7 +34,7 @@
     "textlint-tester": "^14.0.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.3",
-    "typescript-eslint": "^8.0.0-alpha.41"
+    "typescript-eslint": "^8.0.0-alpha.46"
   },
   "name": "textlint-rule-period-in-list-item-with-morpheme-match",
   "directories": {
