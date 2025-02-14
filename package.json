@@ -26,15 +26,15 @@
   "devDependencies": {
     "@textlint/types": "^14.4.2",
     "@types/node": "^22.13.1",
-    "eslint": "^9.19.0",
+    "eslint": "^9.20.1",
     "eslint-config-prettier": "^10.0.1",
     "npm-run-all": "^4.1.5",
-    "prettier": "^3.4.2",
+    "prettier": "^3.5.1",
     "textlint-scripts": "^14.4.2",
     "textlint-tester": "^14.4.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3",
-    "typescript-eslint": "^8.23.0"
+    "typescript-eslint": "^8.24.0"
   },
   "name": "textlint-rule-period-in-list-item-with-morpheme-match",
   "directories": {
