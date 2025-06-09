@@ -22,8 +22,8 @@ importers:
         specifier: ^14.7.2
         version: 14.7.2
       '@types/node':
-        specifier: ^22.15.21
-        version: 22.15.28
+        specifier: ^22.15.30
+        version: 22.15.30
       eslint:
         specifier: ^9.28.0
         version: 9.28.0
@@ -38,13 +38,13 @@ importers:
         version: 3.5.3
       textlint-scripts:
         specifier: ^14.7.2
-        version: 14.7.2(ts-node@10.9.2(@types/node@22.15.28)(typescript@5.8.3))(typescript@5.8.3)
+        version: 14.7.2(ts-node@10.9.2(@types/node@22.15.30)(typescript@5.8.3))(typescript@5.8.3)
       textlint-tester:
         specifier: ^14.7.2
         version: 14.7.2
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@22.15.28)(typescript@5.8.3)
+        version: 10.9.2(@types/node@22.15.30)(typescript@5.8.3)
       typescript:
         specifier: ^5.8.3
         version: 5.8.3
@@ -749,8 +749,8 @@ packages:
   '@types/mdast@3.0.15':
     resolution: {integrity: sha512-LnwD+mUEfxWMa1QpDraczIn6k0Ee3SMicuYSSzS6ZYl2gKS09EClnJYGd8Du6rfc5r/GZEk5o1mRb8TaTj03sQ==}
 
-  '@types/node@22.15.28':
-    resolution: {integrity: sha512-I0okKVDmyKR281I0UIFV7EWAWRnR0gkuSKob5wVcByyyhr7Px/slhkQapcYX4u00ekzNWaS1gznKZnuzxwo4pw==}
+  '@types/node@22.15.30':
+    resolution: {integrity: sha512-6Q7lr06bEHdlfplU6YRbgG1SFBdlsfNC4/lX+SkhiTs0cpJkOElmWls8PxDFv4yY/xKb8Y6SO0OmSX4wgqTZbA==}
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -3213,7 +3213,7 @@ snapshots:
     dependencies:
       '@types/unist': 2.0.11
 
-  '@types/node@22.15.28':
+  '@types/node@22.15.30':
     dependencies:
       undici-types: 6.21.0
 
@@ -4740,7 +4740,7 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  textlint-scripts@14.7.2(ts-node@10.9.2(@types/node@22.15.28)(typescript@5.8.3))(typescript@5.8.3):
+  textlint-scripts@14.7.2(ts-node@10.9.2(@types/node@22.15.30)(typescript@5.8.3))(typescript@5.8.3):
     dependencies:
       '@babel/cli': 7.27.2(@babel/core@7.27.1)
       '@babel/core': 7.27.1
@@ -4754,7 +4754,7 @@ snapshots:
       pkg-to-readme: 3.0.1
       textlint-tester: 14.7.2
     optionalDependencies:
-      ts-node: 10.9.2(@types/node@22.15.28)(typescript@5.8.3)
+      ts-node: 10.9.2(@types/node@22.15.30)(typescript@5.8.3)
       typescript: 5.8.3
     transitivePeerDependencies:
       - supports-color
@@ -4778,14 +4778,14 @@ snapshots:
     dependencies:
       typescript: 5.8.3
 
-  ts-node@10.9.2(@types/node@22.15.28)(typescript@5.8.3):
+  ts-node@10.9.2(@types/node@22.15.30)(typescript@5.8.3):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 22.15.28
+      '@types/node': 22.15.30
       acorn: 8.12.0
       acorn-walk: 8.3.3
       arg: 4.1.3
