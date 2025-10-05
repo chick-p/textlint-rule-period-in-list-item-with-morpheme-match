@@ -24,14 +24,14 @@
     "fix:eslint": "pnpm run lint:eslint --fix"
   },
   "devDependencies": {
-    "@textlint/types": "^15.2.0",
+    "@textlint/types": "^15.2.2",
     "@types/node": "^24.0.13",
     "eslint": "^9.36.0",
     "eslint-config-prettier": "^10.1.7",
     "npm-run-all": "^4.1.5",
     "prettier": "^3.6.2",
-    "textlint-scripts": "^15.2.0",
-    "textlint-tester": "^15.2.0",
+    "textlint-scripts": "^15.2.2",
+    "textlint-tester": "^15.2.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.45.0"
@@ -44,7 +44,7 @@
   "license": "MIT",
   "description": "",
   "dependencies": {
-    "@textlint/ast-node-types": "^15.2.0",
+    "@textlint/ast-node-types": "^15.2.2",
     "check-ends-with-period": "^3.0.2",
     "kuromojin": "^3.0.1"
   }
