@@ -27,7 +27,7 @@
     "@textlint/types": "^15.5.0",
     "@types/node": "^25.0.3",
     "eslint": "^9.39.2",
-    "eslint-config-prettier": "^10.1.7",
+    "eslint-config-prettier": "^10.1.8",
     "npm-run-all": "^4.1.5",
     "prettier": "^3.7.4",
     "textlint-scripts": "^15.5.0",
