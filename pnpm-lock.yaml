@@ -22,8 +22,8 @@ importers:
         specifier: ^15.5.1
         version: 15.5.1
       '@types/node':
-        specifier: ^25.0.10
-        version: 25.0.10
+        specifier: ^25.1.0
+        version: 25.1.0
       eslint:
         specifier: ^9.39.2
         version: 9.39.2
@@ -38,7 +38,7 @@ importers:
         version: 3.8.1
       textlint-scripts:
         specifier: ^15.5.1
-        version: 15.5.1(ts-node@10.9.2(@types/node@25.0.10)(typescript@5.9.3))(typescript@5.9.3)
+        version: 15.5.1(ts-node@10.9.2(@types/node@25.1.0)(typescript@5.9.3))(typescript@5.9.3)
       textlint-tester:
         specifier: ^15.5.1
         version: 15.5.1
@@ -745,8 +745,8 @@ packages:
   '@types/mdast@3.0.15':
     resolution: {integrity: sha512-LnwD+mUEfxWMa1QpDraczIn6k0Ee3SMicuYSSzS6ZYl2gKS09EClnJYGd8Du6rfc5r/GZEk5o1mRb8TaTj03sQ==}
 
-  '@types/node@25.0.10':
-    resolution: {integrity: sha512-zWW5KPngR/yvakJgGOmZ5vTBemDoSqF3AcV/LrO5u5wTWyEAVVh+IT39G4gtyAkh3CtTZs8aX/yRM82OfzHJRg==}
+  '@types/node@25.1.0':
+    resolution: {integrity: sha512-t7frlewr6+cbx+9Ohpl0NOTKXZNV9xHRmNOvql47BFJKcEG1CxtxlPEEe+gR9uhVWM4DwhnvTF110mIL4yP9RA==}
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -3270,7 +3270,7 @@ snapshots:
     dependencies:
       '@types/unist': 2.0.11
 
-  '@types/node@25.0.10':
+  '@types/node@25.1.0':
     dependencies:
       undici-types: 7.16.0
 
@@ -4832,7 +4832,7 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  textlint-scripts@15.5.1(ts-node@10.9.2(@types/node@25.0.10)(typescript@5.9.3))(typescript@5.9.3):
+  textlint-scripts@15.5.1(ts-node@10.9.2(@types/node@25.1.0)(typescript@5.9.3))(typescript@5.9.3):
     dependencies:
       '@babel/cli': 7.28.6(@babel/core@7.28.6)
       '@babel/core': 7.28.6
@@ -4846,7 +4846,7 @@ snapshots:
       pkg-to-readme: 3.0.1
       textlint-tester: 15.5.1
     optionalDependencies:
-      ts-node: 10.9.2(@types/node@25.0.10)(typescript@5.9.3)
+      ts-node: 10.9.2(@types/node@25.1.0)(typescript@5.9.3)
       typescript: 5.9.3
     transitivePeerDependencies:
       - supports-color
@@ -4878,14 +4878,14 @@ snapshots:
     dependencies:
       typescript: 5.9.3
 
-  ts-node@10.9.2(@types/node@25.0.10)(typescript@5.9.3):
+  ts-node@10.9.2(@types/node@25.1.0)(typescript@5.9.3):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.12
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 25.0.10
+      '@types/node': 25.1.0
       acorn: 8.15.0
       acorn-walk: 8.3.4
       arg: 4.1.3
