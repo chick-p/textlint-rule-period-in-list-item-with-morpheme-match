@@ -24,6 +24,7 @@
     "fix:eslint": "pnpm run lint:eslint --fix"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@textlint/types": "^15.5.1",
     "@types/node": "^25.3.0",
     "eslint": "^10.0.1",
