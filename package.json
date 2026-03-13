@@ -27,14 +27,14 @@
     "@eslint/js": "^10.0.1",
     "@textlint/types": "^15.5.2",
     "@types/node": "^25.3.5",
-    "eslint": "^10.0.2",
+    "eslint": "^10.0.3",
     "eslint-config-prettier": "^10.1.8",
     "npm-run-all2": "^8.0.4",
     "prettier": "^3.8.1",
     "textlint-scripts": "^15.5.2",
     "textlint-tester": "^15.5.2",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.56.1"
+    "typescript-eslint": "^8.57.0"
   },
   "name": "textlint-rule-period-in-list-item-with-morpheme-match",
   "directories": {
