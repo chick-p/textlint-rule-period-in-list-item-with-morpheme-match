@@ -25,8 +25,8 @@ importers:
         specifier: ^15.5.2
         version: 15.5.2
       '@types/node':
-        specifier: ^25.5.2
-        version: 25.5.2
+        specifier: ^25.6.0
+        version: 25.6.0
       eslint:
         specifier: ^10.2.0
         version: 10.2.0
@@ -41,7 +41,7 @@ importers:
         version: 3.8.3
       textlint-scripts:
         specifier: ^15.5.2
-        version: 15.5.2(ts-node@10.9.2(@types/node@25.5.2)(typescript@5.9.3))(typescript@5.9.3)
+        version: 15.5.2(ts-node@10.9.2(@types/node@25.6.0)(typescript@5.9.3))(typescript@5.9.3)
       textlint-tester:
         specifier: ^15.5.2
         version: 15.5.2
@@ -746,8 +746,8 @@ packages:
   '@types/mdast@3.0.15':
     resolution: {integrity: sha512-LnwD+mUEfxWMa1QpDraczIn6k0Ee3SMicuYSSzS6ZYl2gKS09EClnJYGd8Du6rfc5r/GZEk5o1mRb8TaTj03sQ==}
 
-  '@types/node@25.5.2':
-    resolution: {integrity: sha512-tO4ZIRKNC+MDWV4qKVZe3Ql/woTnmHDr5JD8UI5hn2pwBrHEwOEMZK7WlNb5RKB6EoJ02gwmQS9OrjuFnZYdpg==}
+  '@types/node@25.6.0':
+    resolution: {integrity: sha512-+qIYRKdNYJwY3vRCZMdJbPLJAtGjQBudzZzdzwQYkEPQd+PJGixUL5QfvCLDaULoLv+RhT3LDkwEfKaAkgSmNQ==}
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -1901,8 +1901,8 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
-  undici-types@7.18.2:
-    resolution: {integrity: sha512-AsuCzffGHJybSaRrmr5eHr81mwJU3kjw6M+uprWvCXiNeN9SOGwQ3Jn8jb8m3Z6izVgknn1R0FTCEAP2QrLY/w==}
+  undici-types@7.19.2:
+    resolution: {integrity: sha512-qYVnV5OEm2AW8cJMCpdV20CDyaN3g0AjDlOGf1OW4iaDEx8MwdtChUp4zu4H0VP3nDRF/8RKWH+IPp9uW0YGZg==}
 
   unicode-canonical-property-names-ecmascript@2.0.1:
     resolution: {integrity: sha512-dA8WbNeb2a6oQzAQ55YlT5vQAWGV9WXOsi3SskE3bcCdM0P4SDd+24zS/OCacdRq5BkdsRj9q3Pg6YyQoxIGqg==}
@@ -2937,9 +2937,9 @@ snapshots:
     dependencies:
       '@types/unist': 2.0.11
 
-  '@types/node@25.5.2':
+  '@types/node@25.6.0':
     dependencies:
-      undici-types: 7.18.2
+      undici-types: 7.19.2
 
   '@types/normalize-package-data@2.4.4': {}
 
@@ -4089,7 +4089,7 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  textlint-scripts@15.5.2(ts-node@10.9.2(@types/node@25.5.2)(typescript@5.9.3))(typescript@5.9.3):
+  textlint-scripts@15.5.2(ts-node@10.9.2(@types/node@25.6.0)(typescript@5.9.3))(typescript@5.9.3):
     dependencies:
       '@babel/cli': 7.28.6(@babel/core@7.29.0)
       '@babel/core': 7.29.0
@@ -4103,7 +4103,7 @@ snapshots:
       pkg-to-readme: 3.0.1
       textlint-tester: 15.5.2
     optionalDependencies:
-      ts-node: 10.9.2(@types/node@25.5.2)(typescript@5.9.3)
+      ts-node: 10.9.2(@types/node@25.6.0)(typescript@5.9.3)
       typescript: 5.9.3
     transitivePeerDependencies:
       - supports-color
@@ -4135,14 +4135,14 @@ snapshots:
     dependencies:
       typescript: 5.9.3
 
-  ts-node@10.9.2(@types/node@25.5.2)(typescript@5.9.3):
+  ts-node@10.9.2(@types/node@25.6.0)(typescript@5.9.3):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.12
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 25.5.2
+      '@types/node': 25.6.0
       acorn: 8.16.0
       acorn-walk: 8.3.5
       arg: 4.1.3
@@ -4173,7 +4173,7 @@ snapshots:
 
   typescript@5.9.3: {}
 
-  undici-types@7.18.2: {}
+  undici-types@7.19.2: {}
 
   unicode-canonical-property-names-ecmascript@2.0.1: {}
 
