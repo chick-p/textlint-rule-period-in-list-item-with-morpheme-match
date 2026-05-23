@@ -29,7 +29,7 @@
     "@types/node": "^25.8.0",
     "eslint": "^10.4.0",
     "eslint-config-prettier": "^10.1.8",
-    "npm-run-all2": "^8.0.4",
+    "npm-run-all2": "^9.0.0",
     "prettier": "^3.8.3",
     "textlint-scripts": "^15.7.1",
     "textlint-tester": "^15.7.1",
